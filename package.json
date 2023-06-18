@@ -1,0 +1,19 @@
+{
+  "name": "vitalsense",
+  "version": "1.0.0",
+  "description": "a smart health monitoring application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuhammadSaeedSaad/VitalSense.git"
+  },
+  "author": "Muhammad saeed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuhammadSaeedSaad/VitalSense/issues"
+  },
+  "homepage": "https://github.com/MuhammadSaeedSaad/VitalSense#readme"
+}
