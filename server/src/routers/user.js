@@ -37,6 +37,7 @@ router.post('/users/login', async (req, res) => {
         }
         const token = await user.generateAuthToken()
         res.send({ user, token })
+        res.redirct("/signals")
     } catch (e) {
         if (e.message === "Unable to login"){
             res.status(401).send({message: "incorrect-email-or-password"});
