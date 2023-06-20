@@ -1,12 +1,3 @@
-// This example uses an ESP32 Development Board
-// to connect to shiftr.io.
-//
-// You can check on your device after a successful
-// connection here: https://www.shiftr.io/try.
-//
-// by Joël Gähwiler
-// https://github.com/256dpi/arduino-mqtt
-
 #include <WiFiClientSecure.h>
 #include <MQTT.h>
 
@@ -68,96 +59,6 @@ void setup() {
 
 int i = 0;
 void loop() {
-  // Serial.println(analogRead(32));
-  // String json = "{\"label\":[";
-  // json += i;
-  // json += ",";
-  // json += i+1;
-  // json += ",";
-  // json += i+2;
-  // json += ",";
-  // json += i+3;
-  // json += ",";
-  // json += i+4;
-  // json += ",";
-  // json += i+5;
-  // json += ",";
-  // json += i+6;
-  // json += "],";
-  // json += "\"ecg\":[";
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(32));
-  // json += "],";
-  // json += "\"ppg\":[";
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += ",";
-  // delay(1);
-  // json += String(analogRead(33));
-  // json += "]}";
-
-
   String json = "{\"label\":";
   json += i;
   json += ",";
@@ -170,17 +71,12 @@ void loop() {
 
 
   client.loop();
-  delay(20);  // <- fixes some issues with WiFi stability
+  delay(20);  // sampling rate
 
   if (!client.connected()) {
     connect();
   }
   client.publish("mqtt", json.c_str());
 
-  // publish a message roughly every second.
-  // if (millis() - lastMillis > 1000) {
-  //   lastMillis = millis();
-  //   client.publish("mqtt", json.c_str());
-  // }
   i++;
 }

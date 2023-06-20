@@ -17,19 +17,20 @@ router.post('/users', async (req, res) => {
         const token = await user.generateAuthToken()
         res.status(201).send({ user, token })
     } catch (e) {
-        // if (e.errors.password.path === "password" && e.errors.password.kind === "minlength") {
-        //     res.status(400).send({message: "password-too-shrot"});
-        // } else if (e.code === 11000 && e.errmsg.includes("duplicate")) {
-        //     res.status(400).send({message: "duplicate-email"})
-        // } else {
-        //     res.status(400).send({message: "internal-server-error"})
-        // }
+        if (e.errors.password.path === "password" && e.errors.password.kind === "minlength") {
+            res.status(400).send({message: "password-too-shrot"});
+        } else if (e.code === 11000 && e.errmsg.includes("duplicate")) {
+            res.status(400).send({message: "duplicate-email"})
+        } else {
+            res.status(400).send({message: "internal-server-error"})
+        }
         console.log(e)
     }
 })
 
 router.post('/users/login', async (req, res) => {
     try {
+        console.log(req.body)
         const user = await User.findByCredentials(req.body.email, req.body.password)
         
         if (!user) {    // this if is not useful and it will never be entered as if there is no user returned an error will be thrown and will skip to catch directly
@@ -37,7 +38,7 @@ router.post('/users/login', async (req, res) => {
         }
         const token = await user.generateAuthToken()
         res.send({ user, token })
-        res.redirct("/signals")
+        // res.render("/signals")
     } catch (e) {
         if (e.message === "Unable to login"){
             res.status(401).send({message: "incorrect-email-or-password"});

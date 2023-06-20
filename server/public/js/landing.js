@@ -17,3 +17,10 @@ signedin().then((result) => {
     navbarDropdownDiv.innerHTML = "";
     console.log(error);
 });
+
+// const signalsButton = document.querySelector("#signals-anchor");
+// signalsButton.addEventListener("click", goToSignals)
+
+// function goToSignals() {
+
+// }

@@ -20,7 +20,7 @@ if (signinForm) {
             if (content.token) {    //success
                 window.localStorage.setItem("authorization", content.token);
                 window.localStorage.setItem("user", JSON.stringify(content.user));
-                window.location = "/views/signals.html";      // redirection
+                window.location = "/signals";      // redirection
             } else {
                 throw new Error(content.message);
             }
@@ -40,7 +40,7 @@ signedin().then((result) => {
         } catch (error) {
             
         }
-        if (window.location.pathname === "/views/signin.html") {
+        if (window.location.pathname === "/signals") {
             mainArea.innerHTML = '<p>You are already signed in</p>';
             mainArea.classList += "mt-3";
         }
